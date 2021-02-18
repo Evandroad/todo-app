@@ -17,8 +17,8 @@ module.exports = {
             modules: __dirname + '/node_modules'
         }
     },
-    pluins: [
-        new ExtractTextPlugin('styles.css')
+    plugins: [
+        new ExtractTextPlugin('app.css')
     ],
     module: {
         loaders: [{
@@ -31,12 +31,9 @@ module.exports = {
             }
         }, {
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
-                fallback: "style-loader",
-                use: "css-loader"
-            })
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
         }, {
-            test: /\.woff|.woff2|.tff|.eot|.svg*.*$/,
+            test: /\.woff|.woff2|.ttf|.eot|.svg*.*$/,
             loader: 'file'
         }]
     }
